@@ -1,0 +1,12 @@
+on:
+  issues:
+    types:
+      - labeled
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Code generation with ChatGPT
+    steps:
+      - uses: actions/checkout@v3
+      - uses: alexanmtz/AIPR@main
