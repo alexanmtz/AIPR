@@ -6,7 +6,7 @@ import re
 
 issue_title = os.environ["ISSUE_TITLE"]
 issue_body = os.environ["ISSUE_BODY"]
-open_ai_api_key = os.environ["OPENAPI_API_KEY"]
+open_ai_api_key = os.environ["OPEN_AI_API_KEY"]
 
 # Step 1: Set up OpenAI API client
 openai.api_key = open_ai_api_key
