@@ -27,7 +27,7 @@ runs:
       shell: bash
       id: openai
       run: |
-        python ./aipr.py
+        python aipr.py
 
     - name: Create topic branch and commit changes
       shell: bash
