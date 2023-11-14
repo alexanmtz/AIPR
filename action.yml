@@ -1,5 +1,5 @@
-name: ChatGPT Code Generation
-description: Create code and pull request by ChatGPT as written in Github issues.
+name: AIPR 
+description: Create an issue and have it solved by our pull request using Open AI.
 branding:
   icon: 'code'
   color: 'blue'
