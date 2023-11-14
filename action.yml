@@ -24,10 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Generate code with ChatGPT API
-        id: chatgpt
+      - name: Generate code with openai API
+        id: openai
         env:
-          CHATGPT_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
+          OPEN_AI_API_KEY: ${{ secrets.CHATGPT_API_KEY }}
         run: |
           python .github/scripts/aipr.py
 
