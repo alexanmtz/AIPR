@@ -3,6 +3,9 @@ import openai
 import os
 import difflib
 import re
+import json
+
+print(json.dumps(dict(os.environ), indent=4))
 
 issue_title = os.environ["ISSUE_TITLE"]
 issue_body = os.environ["ISSUE_BODY"]
