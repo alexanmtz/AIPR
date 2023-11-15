@@ -67,7 +67,8 @@ if __name__ == "__main__":
     for filename, content in all_files.items():
         if filename in file_in_prompt:
             modified_content = request_changes_from_openai(content)
-            #modified_content = "This is a modified content"
+            print('content', content)
+            print('modified content', modified_content)
             patch = generate_patch(content, modified_content, filename)
             patches[filename] = patch
             print(patch)
