@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
     file_in_prompt = extract_specific_file_path(question)
     print('----------------------------------\n')
-    print('files in the repo', file_in_prompt + '\n')
+    print('files in the repo', file_in_prompt)
     print('----------------------------------\n')
     
     for filename, content in all_files.items():
