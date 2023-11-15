@@ -11,6 +11,12 @@ runs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
+    - name: Checkout other repository
+      uses: actions/checkout@v2
+      with:
+        repository: alexanmtz/AIPR
+        token: ${{ github.token }} # Use the PAT stored as a secret
+        path: 'scripts'
 
     - name: Setup Python
       uses: actions/setup-python@v4
@@ -27,9 +33,7 @@ runs:
       shell: bash
       id: openai
       run: |
-        pwd
-        ls
-        python .github/scripts/aipr.py
+        python ./scripts/aipr.py
 
     - name: Create topic branch and commit changes
       shell: bash
