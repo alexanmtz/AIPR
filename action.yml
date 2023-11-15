@@ -41,7 +41,7 @@ runs:
       env: 
         ISSUE_TITLE: ${{ github.event.issue.title }}
         ISSUE_BODY: ${{ github.event.issue.body }}
-        OPEN_AI_API_KEY: ${{ inputs.openai_api_key }}
+        OPEN_AI_API_KEY: ${{ github.event.inputs.openai_api_key }}
       run: |
         python ./scripts/aipr.py
         git apply changes.patch
