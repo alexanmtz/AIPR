@@ -55,7 +55,7 @@ def extract_specific_file_path(text):
 
 # Main script
 if __name__ == "__main__":
-    directory = '../repo'
+    directory = './repo'
     all_files = read_all_files_from_directory(directory)
     print('all files', all_files)
 
