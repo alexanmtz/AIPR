@@ -41,10 +41,10 @@ runs:
       env: 
         ISSUE_TITLE: ${{ github.event.issue.title }}
         ISSUE_BODY: ${{ github.event.issue.body }}
-        OPEN_AI_API_KEY: ${{ github.event.inputs.openai_api_key }}
+        OPEN_AI_API_KEY: ${{ env.openai_api_key }}
       run: |
         echo "Generating code with OpenAI API"
-        echo "Getting the input from the caller ${{ github.event.inputs.openai_api_key }}"
+        echo "Getting the input from the caller ${{ env.openai_api_key }}"
         echo "Open AI API KEY: $OPEN_AI_API_KEY"
         python ./scripts/aipr.py
         git apply changes.patch
