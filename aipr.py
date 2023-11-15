@@ -34,7 +34,7 @@ def request_changes_from_openai(context):
         prompt=question,
         max_tokens=100  # you can adjust this based on your needs
     )
-    print(response.choices)
+    print('reponse choices', response.choices)
     return response.choices[0].text.strip()
 
 # Step 4: Generate a Git-like patch
@@ -70,7 +70,7 @@ if __name__ == "__main__":
             #modified_content = "This is a modified content"
             patch = generate_patch(content, modified_content, filename)
             patches[filename] = patch
-            #print(patch)
+            print(patch)
     # Saving patches to a file
     with open("changes.patch", "w") as f:
         for filename, patch in patches.items():
