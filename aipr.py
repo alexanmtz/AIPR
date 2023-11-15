@@ -5,7 +5,7 @@ import difflib
 import re
 import json
 
-print(json.dumps(dict(os.environ), indent=4))
+# print(json.dumps(dict(os.environ), indent=4))
 
 issue_title = os.environ["ISSUE_TITLE"]
 issue_body = os.environ["ISSUE_BODY"]
@@ -55,14 +55,14 @@ def extract_specific_file_path(text):
 
 # Main script
 if __name__ == "__main__":
-    directory = './repository'
+    directory = '../'
     all_files = read_all_files_from_directory(directory)
     print(all_files)
 
     patches = {}
 
     file_in_prompt = extract_specific_file_path(question)
-    print(file_in_prompt)
+    print('files in the repo', file_in_prompt)
     
     for filename, content in all_files.items():
         if filename in file_in_prompt:
