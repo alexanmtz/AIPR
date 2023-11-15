@@ -33,6 +33,10 @@ runs:
     - name: Generate code with openai API
       shell: bash
       id: openai
+      with: 
+        ISSUE_TITLE: ${{ github.event.issue.title }}
+        ISSUE_BODY: ${{ github.event.issue.body }}
+        OPEN_AI_API_KEY: ${{ vars.OPEN_AI_API_KEY }}
       run: |
         python ./scripts/aipr.py
 
