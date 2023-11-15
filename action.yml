@@ -53,10 +53,7 @@ runs:
     - name: apply changes
       shell: bash
       run: |
-        echo "------ changes.patch ------"
-        cat changes.patch
-        echo "------ changes.patch end ------"
-        git config --global diff.noprefix false
+        git config diff.noprefix false
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
         git apply changes.patch
