@@ -39,10 +39,6 @@ runs:
         OPEN_AI_API_KEY: ${{ env.OPEN_AI_API_KEY }}
       run: |
         python ./scripts/aipr.py
-
-    - name: Create topic branch and commit changes
-      shell: bash
-      run: |
         git apply changes.patch
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
@@ -51,6 +47,7 @@ runs:
         git commit -m "Generated code by ChatGPT || echo "No changes to commit"
         git push --set-upstream origin chatgpt
 
+        
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
