@@ -3,6 +3,11 @@ description: Create an issue and have it solved by our pull request using Open A
 branding:
   icon: 'code'
   color: 'blue'
+inputs:
+  openai_api_key:
+    description: 'Open AI API Key'
+    required: true
+    default: ${{ secrets.OPEN_AI_API_KEY }}
 
 runs:
   using: "composite"
@@ -36,7 +41,7 @@ runs:
       env: 
         ISSUE_TITLE: ${{ github.event.issue.title }}
         ISSUE_BODY: ${{ github.event.issue.body }}
-        OPEN_AI_API_KEY: ${{ env.OPEN_AI_API_KEY }}
+        OPEN_AI_API_KEY: ${{ inputs.openai_api_key }}
       run: |
         python ./scripts/aipr.py
         git apply changes.patch
@@ -44,9 +49,8 @@ runs:
         git config user.email "actions@github.com"
         git checkout -b chatgpt
         git add .
-        git commit -m "Generated code by ChatGPT || echo "No changes to commit"
+        git commit -m "Generated code by ChatGPT"
         git push --set-upstream origin chatgpt
-
         
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
