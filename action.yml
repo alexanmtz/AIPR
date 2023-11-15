@@ -16,6 +16,7 @@ runs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
+        path: 'repo'
     - name: Checkout other repository
       uses: actions/checkout@v2
       with:

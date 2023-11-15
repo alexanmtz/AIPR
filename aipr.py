@@ -55,14 +55,16 @@ def extract_specific_file_path(text):
 
 # Main script
 if __name__ == "__main__":
-    directory = '../'
+    directory = '../repo'
     all_files = read_all_files_from_directory(directory)
     print('all files', all_files)
 
     patches = {}
 
     file_in_prompt = extract_specific_file_path(question)
-    print('files in the repo', file_in_prompt)
+    print('----------------------------------\n')
+    print('files in the repo', file_in_prompt + '\n')
+    print('----------------------------------\n')
     
     for filename, content in all_files.items():
         if filename in file_in_prompt:
