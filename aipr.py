@@ -72,8 +72,8 @@ if __name__ == "__main__":
             patches[filename] = patch
             #print(patch)
     # Saving patches to a file
-    with open("../changes.patch", "w") as f:
+    with open("changes.patch", "w") as f:
         for filename, patch in patches.items():
             f.write(patch)
             f.write('\n\n')
-    subprocess.run(["git", "apply", "../changes.patch"], check=True)
+    #subprocess.run(["git", "apply", "../changes.patch"], check=True)
