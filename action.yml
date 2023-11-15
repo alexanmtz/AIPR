@@ -41,11 +41,11 @@ runs:
       env: 
         ISSUE_TITLE: ${{ github.event.issue.title }}
         ISSUE_BODY: ${{ github.event.issue.body }}
-        OPEN_AI_API_KEY: ${{ env.openai_api_key }}
+        OPENAI_API_KEY: ${{ inputs.openai_api_key }}
       run: |
         echo "Generating code with OpenAI API"
-        echo "Getting the input from the caller ${{ env.openai_api_key }}"
-        echo "Open AI API KEY: $OPEN_AI_API_KEY"
+        echo "Getting the input from the repo which called the workflow: ${{ env.openai_api_key }}"
+        echo "Open AI API KEY on the env: $OPENAI_API_KEY"
         python ./scripts/aipr.py
         git apply changes.patch
         git config user.name "GitHub Actions Bot"
