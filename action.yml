@@ -43,6 +43,9 @@ runs:
         ISSUE_BODY: ${{ github.event.issue.body }}
         OPEN_AI_API_KEY: ${{ github.event.inputs.openai_api_key }}
       run: |
+        echo "Generating code with OpenAI API"
+        echo "Getting the input from the caller ${{ github.event.inputs.openai_api_key }}"
+        echo "Open AI API KEY: $OPEN_AI_API_KEY"
         python ./scripts/aipr.py
         git apply changes.patch
         git config user.name "GitHub Actions Bot"
