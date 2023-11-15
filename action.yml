@@ -7,7 +7,7 @@ inputs:
   openai_api_key:
     description: 'Open AI API Key'
     required: true
-    default: ${{ secrets.OPEN_AI_API_KEY }}
+    default: ''
 
 runs:
   using: "composite"
