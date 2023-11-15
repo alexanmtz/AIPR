@@ -19,6 +19,7 @@ question = issue_title + "\n\n" + issue_body + "\n\n"
 def read_all_files_from_directory(directory):
     file_contents = {}
     for root, _, files in os.walk(directory):
+        print('directory', directory)
         for file in files:
             filepath = os.path.join(root, file)
             with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
