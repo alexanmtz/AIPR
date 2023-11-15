@@ -75,7 +75,7 @@ if __name__ == "__main__":
             patches[filename] = patch
             print(patch)
     # Saving patches to a file
-    with open("changes.patch", "w") as f:
+    with open("../repo/changes.patch", "w") as f:
         for filename, patch in patches.items():
             f.write(patch)
             f.write('\n\n')

@@ -52,9 +52,9 @@ runs:
       shell: bash
       run: |
         echo "------ changes.patch ------"
-        cat changes.patch
+        cat ../repo/changes.patch
         echo "------ changes.patch end ------"
-        git apply changes.patch
+        git apply ../repo/changes.patch
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
         git checkout -b chatgpt
