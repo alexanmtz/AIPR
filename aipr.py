@@ -39,7 +39,7 @@ def request_changes_from_openai(context):
 
 # Step 4: Generate a Git-like patch
 def generate_patch(original, modified, filename):
-    d = difflib.unified_diff(original.splitlines(), modified.splitlines(), filename.splitlines(), filename.splitlines())
+    d = difflib.unified_diff(original, modified.splitlines(), filename, filename)
     diff_list = list(d)
     return ''.join(diff_list)
 
