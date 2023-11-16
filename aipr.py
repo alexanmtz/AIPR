@@ -78,5 +78,5 @@ if __name__ == "__main__":
     with open("changes.patch", "w") as f:
         for filename, patch in patches.items():
             f.write(patch)
-            f.write('\n')
+            f.write('\n\n')
     #subprocess.run(["git", "apply", "../changes.patch"], check=True)
