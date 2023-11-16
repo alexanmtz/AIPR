@@ -40,7 +40,7 @@ def request_changes_from_openai(context):
 # Step 4: Generate a Git-like patch
 def generate_patch(original, modified, filename):
     d = difflib.unified_diff(original.splitlines(), modified.splitlines(), filename, filename)
-    return '\n'.join(list(d))
+    return ''.join(list(d))
 
 def extract_specific_file_path(text):
     # Regular expression to find file paths in a specific format as per the example

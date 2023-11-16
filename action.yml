@@ -49,14 +49,12 @@ runs:
         echo "Getting the input from the repo which called the workflow: ${{ env.openai_api_key }}"
         echo "Open AI API KEY on the env: $OPENAI_API_KEY"
         python ./scripts/aipr.py
-        ls -la
     - name: apply changes
       shell: bash
       run: |
-        git config diff.noprefix false
+        git apply changes.patch
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
-        git apply changes.patch
         git checkout -b chatgpt
         git add .
         git commit -m "Generated code by ChatGPT"
