@@ -55,7 +55,7 @@ runs:
         cd repo
         git config user.name "GitHub Actions Bot powered by AIPR"
         git config user.email "pull-request@aipr.com"
-        git checkout -b AIPR-${{ github.event.issue.number }}
+        git checkout -b AIPR-generated-${{ github.event.issue.number }}
         git add .
         git commit -m "Generated code by AIPR"
         git push --set-upstream origin AIPR-generated-${{ github.event.issue.number }}
