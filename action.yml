@@ -52,6 +52,7 @@ runs:
     - name: apply changes
       shell: bash
       run: |
+        cd repo
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
         git checkout -b chatgpt
