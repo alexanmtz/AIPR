@@ -49,16 +49,6 @@ runs:
         echo "Getting the input from the repo which called the workflow: ${{ env.openai_api_key }}"
         echo "Open AI API KEY on the env: $OPENAI_API_KEY"
         python ./scripts/aipr.py
-    - name: apply changes
-      shell: bash
-      run: |
-        cd repo
-        git config user.name "GitHub Actions Bot powered by AIPR"
-        git config user.email "pull-request@aipr.com"
-        git checkout -b AIPR-generated-${{ github.event.issue.number }}
-        git add .
-        git commit -m "Generated code by AIPR"
-        git push --set-upstream origin AIPR-generated-${{ github.event.issue.number }}
         
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
