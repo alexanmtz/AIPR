@@ -37,15 +37,23 @@ def request_changes_from_openai(context):
     print('reponse choices', response.choices)
     return response.choices[0].text.strip()
 
+def add_linebreaks(input_list):
+    """
+    This function takes a list of strings and adds a line break at the end of each string if it's not already there.
+    """
+    output_list = []
+    for item in input_list:
+        if not item.endswith('\n'):
+            item += '\n'
+        output_list.append(item)
+    return output_list
+
 # Step 4: Generate a Git-like patch
 def generate_patch(original, modified, filename):
     d = difflib.unified_diff(original.splitlines(), modified.splitlines(), filename, filename)
     diff_list = list(d)
-    print('diff list before: ', diff_list)
-    diff_list[3] = diff_list[3] + '\n'
-    diff_list[4] = diff_list[4] + '\n'
-    print('diff list after: ', diff_list)
-    return ''.join(diff_list)
+    proccessed_diff_list = add_linebreaks(diff_list)
+    return ''.join(proccessed_diff_list)
 
 def extract_specific_file_path(text):
     # Regular expression to find file paths in a specific format as per the example
