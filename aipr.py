@@ -41,6 +41,8 @@ def request_changes_from_openai(context):
 def generate_patch(original, modified, filename):
     d = difflib.unified_diff(original.splitlines(), modified.splitlines(), filename, filename)
     diff_list = list(d)
+    diff_list[3] = diff_list[3] + '\n'
+    diff_list[4] = diff_list[4] + '\n'
     return ''.join(diff_list)
 
 def extract_specific_file_path(text):
