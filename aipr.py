@@ -26,13 +26,13 @@ def read_all_files_from_directory(directory):
     return file_contents
 
 # Step 3: Query OpenAI for changes (this is a simplistic approach and can be refined)
-def request_changes_from_openai(context):
+def request_changes_from_openai(filename, context):
     response = openai.Completion.create(
         model="gpt-3.5-turbo-instruct",
         #engine="gpt-3.5-turbo",
         #prompt=context + "\n\n insert a title 'created by AIPRs README' on README.md file and 'Created by AIPRs other' on otherfile.txt file \n\n",
-        prompt=question,
-        max_tokens=100  # you can adjust this based on your needs
+        prompt="Given the content of the following filename '" + filename + "': \n\n" + context + "\n\n" + question,
+        max_tokens=200  # you can adjust this based on your needs
     )
     print('reponse choices', response.choices)
     return response.choices[0].text.strip()
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     for filename, content in all_files.items():
         print('filename: ', filename)
         if filename in file_in_prompt:
-            modified_content = request_changes_from_openai(content)
+            modified_content = request_changes_from_openai(filename, content)
             print('modified content', modified_content)
             patch = generate_patch(content, modified_content, filename)
             patches[filename] = patch
