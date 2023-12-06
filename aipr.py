@@ -77,7 +77,7 @@ if __name__ == "__main__":
     files_in_prompt_full_path = []
 
     for x in files_in_prompt:
-        files_in_prompt_full_path.append(directory + x)
+        files_in_prompt_full_path.append(directory + x[1:])
     
     for filename, content in all_files.items():
         if filename in files_in_prompt_full_path:
