@@ -73,11 +73,15 @@ if __name__ == "__main__":
     
     patches = {}
 
-    file_in_prompt = extract_specific_file_path(question)
+    files_in_prompt = extract_specific_file_path(question)
+    files_in_prompt_full_path = []
+
+    for x in files_in_prompt:
+            if x != nan:
+                files_in_prompt_full_path.append(directory + x)
     
     for filename, content in all_files.items():
-        final_file = directory + file_in_prompt
-        if filename in final_file:
+        if filename in files_in_prompt:
             modified_content = request_changes_from_openai(filename, content)
             print('modified content', modified_content)
             patch = generate_patch(content, modified_content, filename)
