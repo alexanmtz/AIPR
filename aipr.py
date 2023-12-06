@@ -70,18 +70,14 @@ def extract_specific_file_path(text):
 if __name__ == "__main__":
     directory = './repo'
     all_files = read_all_files_from_directory(directory)
-    #print('all files', all_files)
-
+    
     patches = {}
 
     file_in_prompt = extract_specific_file_path(question)
-    print('----------------------------------\n')
-    print('files in prompt', file_in_prompt)
-    print('----------------------------------\n')
     
     for filename, content in all_files.items():
-        print('filename: ', filename)
-        if filename in file_in_prompt:
+        final_file = directory + file_in_prompt
+        if filename in final_file:
             modified_content = request_changes_from_openai(filename, content)
             print('modified content', modified_content)
             patch = generate_patch(content, modified_content, filename)
