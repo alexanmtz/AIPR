@@ -46,7 +46,7 @@ runs:
         ISSUE_TITLE: ${{ github.event.issue.title }}
         ISSUE_BODY: ${{ github.event.issue.body }}
         OPENAI_API_KEY: ${{ inputs.openai_api_key }}
-        OPENAI_API_TOKENS: ${{ inputs.openai_api_tokens }}
+        OPENAI_TOKENS: ${{ inputs.openai_tokens }}
       run: |
         echo "Generating code with OpenAI API"
         echo "Getting the input from the repo which called the workflow: ${{ env.openai_api_key }}"
