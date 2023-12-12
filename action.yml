@@ -8,7 +8,9 @@ inputs:
     description: 'Open AI API Key'
     required: true
     default: ''
-
+  openai_api_tokens:
+    description: 'Open AI Max tokens'
+    required: false
 runs:
   using: "composite"
   steps:
@@ -44,10 +46,12 @@ runs:
         ISSUE_TITLE: ${{ github.event.issue.title }}
         ISSUE_BODY: ${{ github.event.issue.body }}
         OPENAI_API_KEY: ${{ inputs.openai_api_key }}
+        OPENAI_API_TOKENS: ${{ inputs.openai_api_tokens }}
       run: |
         echo "Generating code with OpenAI API"
         echo "Getting the input from the repo which called the workflow: ${{ env.openai_api_key }}"
         echo "Open AI API KEY on the env: $OPENAI_API_KEY"
+        echo "Open AI API max tokens set: $OPENAI_API_TOKENS"
         python ./scripts/aipr.py
         
     - name: Create Pull Request
