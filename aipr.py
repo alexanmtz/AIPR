@@ -5,11 +5,10 @@ import difflib
 import re
 import json
 
-# print(json.dumps(dict(os.environ), indent=4))
-
 issue_title = os.environ["ISSUE_TITLE"]
 issue_body = os.environ["ISSUE_BODY"]
 open_ai_api_key = os.environ["OPENAI_API_KEY"]
+open_ai_tokens = os.environ["OPENAI_TOKENS"]
 
 # Step 1: Set up OpenAI API client
 openai.api_key = open_ai_api_key
@@ -32,7 +31,7 @@ def request_changes_from_openai(filename, context):
         #engine="gpt-3.5-turbo",
         #prompt=context + "\n\n insert a title 'created by AIPRs README' on README.md file and 'Created by AIPRs other' on otherfile.txt file \n\n",
         prompt="Given the content of the filename called '" + filename  + "': \n\n" + context + "\n\n" + question,
-        max_tokens=800  # you can adjust this based on your needs
+        max_tokens=open_ai_tokens or 200  # you can adjust this based on your needs
     )
     print('reponse choices', response.choices)
     return response.choices[0].text.strip()
