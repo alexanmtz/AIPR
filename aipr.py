@@ -31,7 +31,7 @@ def request_changes_from_openai(filename, context):
         #engine="gpt-3.5-turbo",
         #prompt=context + "\n\n insert a title 'created by AIPRs README' on README.md file and 'Created by AIPRs other' on otherfile.txt file \n\n",
         #prompt="Giving the filename:'" + filename  + "' and the following content" + context + "\ntitle:" + issue_title + "\nissue:" + question,
-        prompt="Given the filename '" + filename  + "' and the existing content below, change the code and provide a solution for the following issue:" + question + "\n\nFilename: " + filename + "\nContent:\n" + context,
+        prompt="Given the filename '" + filename  + "' and the existing code below, change this code and provide a new code as solution for the issue:" + question + "\n\nFilename: " + filename + "\nContent:\n" + context,
         max_tokens=int(open_ai_tokens) or 200  # you can adjust this based on your needs
     )
     print('reponse choices', response.choices)
