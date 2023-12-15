@@ -8,7 +8,7 @@ inputs:
     description: 'Open AI API Key'
     required: true
     default: ''
-  openai_api_tokens:
+  openai_tokens:
     description: 'Open AI Max tokens'
     required: false
 runs:
