@@ -49,11 +49,17 @@ def add_linebreaks(input_list):
     return output_list
 
 # Step 4: Generate a Git-like patch
+#def generate_patch(original, modified, filename):
+#    d = difflib.unified_diff(original.splitlines(), modified.splitlines(), filename, filename)
+#    diff_list = list(d)
+#    proccessed_diff_list = add_linebreaks(diff_list)
+#   return ''.join(proccessed_diff_list)
+
 def generate_patch(original, modified, filename):
-    d = difflib.unified_diff(original.splitlines(), modified.splitlines(), filename, filename)
-    diff_list = list(d)
-    proccessed_diff_list = add_linebreaks(diff_list)
-    return ''.join(proccessed_diff_list)
+    original_lines = original.splitlines(keepends=True)
+    modified_lines = modified.splitlines(keepends=True)
+    d = difflib.unified_diff(original_lines, modified_lines, fromfile=filename, tofile=filename)
+    return ''.join(d)
 
 def extract_specific_file_path(text):
     # Regular expression to find file paths in a specific format as per the example
