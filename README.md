@@ -9,6 +9,13 @@ AIPR (AI-Powered Pull Request) is a Github action designed to streamline issue r
 3. The solution is added to a new PR and pushed to the repository.
 4. Project collaborators can review the solution and merge the PR if they decide it is an appropriate solution.
 
+## Limitations
+
+There are a few limitations to keep in mind when using AIPR, including:
+
+- AIPR only works for one file, so you need to specify the file in the format './filename.ext', a relative path to the repository.
+- To ensure the most accurate solution, it is important to be as descriptive as possible in the issue description and comments.
+
 ## How to Use AIPR in Your Project
 
 1. Install the AIPR repository as a dependency in your project.
@@ -47,7 +54,6 @@ jobs:
         openai_api_key: ${{ secrets.OPENAI_API_KEY }}
         openai_tokens: 200 #default is 200
 ```
-This workflow file will trigger the AIPR action when an issue is labeled, reopened, or when a comment containing "Create PR with AIPR 🚀" is added to an issue.
 
 ## Author
 This project was created by Alexandre Magno (https://github.com/alexanmtz).
