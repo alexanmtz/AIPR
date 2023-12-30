@@ -9,6 +9,7 @@ issue_title = os.environ["ISSUE_TITLE"]
 issue_body = os.environ["ISSUE_BODY"]
 open_ai_api_key = os.environ["OPENAI_API_KEY"]
 open_ai_tokens = os.environ["OPENAI_TOKENS"]
+open_ai_model = os.environ["OPENAI_MODEL"]
 
 # Step 1: Set up OpenAI API client
 openai.api_key = open_ai_api_key
@@ -27,7 +28,7 @@ def read_all_files_from_directory(directory):
 # Step 3: Query OpenAI for changes (this is a simplistic approach and can be refined)
 def request_changes_from_openai(context, filename):
     response = openai.Completion.create(
-        model="gpt-3.5-turbo-instruct",
+        model=open_ai_model or "gpt-3.5-turbo-instruct",
         #engine="gpt-3.5-turbo",
         #prompt=context + "\n\n insert a title 'created by AIPRs README' on README.md file and 'Created by AIPRs other' on otherfile.txt file \n\n",
         prompt="Giving the filename:'" + filename  + "' and the following content:'" + context + "'\n modify the content to provide a solution for this issue:\n'" + question + "'\n and output the result.",
