@@ -11,6 +11,10 @@ inputs:
   openai_tokens:
     description: 'Open AI Max tokens'
     required: false
+  openai_model:
+    description: 'Open AI model'
+    required: false
+    default: 'gpt-3.5-turbo-instruct'
 runs:
   using: "composite"
   steps:
