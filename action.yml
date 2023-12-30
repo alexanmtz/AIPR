@@ -57,7 +57,7 @@ runs:
         echo "Getting the input from the repo which called the workflow: ${{ env.openai_api_key }}"
         echo "Open AI API KEY on the env: $OPENAI_API_KEY"
         echo "Open AI API max tokens set: $OPENAI_TOKENS"
-        echo "Open AI MODEL set: $OPENAI_TOKENS"
+        echo "Open AI MODEL set: $OPENAI_MODEL"
         python ./scripts/aipr.py
         
     - name: Create Pull Request
