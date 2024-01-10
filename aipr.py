@@ -42,9 +42,7 @@ def request_changes_from_openai(context, filename):
     stories = [""] * len(prompts)
     for choice in response.choices:
         stories[choice.index] = prompts[choice.index] + choice.text.strip()
-    # print stories
-    for story in stories:
-        print(story)
+    return stories.join('').strip()
 
 def add_linebreaks(input_list):
     """
