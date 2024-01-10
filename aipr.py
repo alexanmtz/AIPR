@@ -27,15 +27,21 @@ def read_all_files_from_directory(directory):
 
 # Step 3: Query OpenAI for changes (this is a simplistic approach and can be refined)
 def request_changes_from_openai(context, filename):
+    num_stories = 10
+    prompt_text = "Giving the filename:'" + filename  + "' and the following content:'" + context + "'\n modify the content to provide a solution for this issue:\n'" + question + "'\n and output the result."
+    prompts = [prompt_text] * num_stories
     response = openai.Completion.create(
         model=open_ai_model or "gpt-3.5-turbo-instruct",
         #engine="gpt-3.5-turbo",
         #prompt=context + "\n\n insert a title 'created by AIPRs README' on README.md file and 'Created by AIPRs other' on otherfile.txt file \n\n",
-        prompt="Giving the filename:'" + filename  + "' and the following content:'" + context + "'\n modify the content to provide a solution for this issue:\n'" + question + "'\n and output the result.",
+        prompt=prompts,
         max_tokens=int(open_ai_tokens) or 200  # you can adjust this based on your needs
     )
-    print('reponse choices', response.choices)
-    return response.choices[0].text.strip()
+    #print('reponse choices', response.choices)
+    #return response.choices[0].text.strip()
+    stories = [""] * len(prompts)
+    for choice in response.choices:
+        stories[choice.index] = prompts[choice.index] + choice.text.strip()
 
 def add_linebreaks(input_list):
     """
