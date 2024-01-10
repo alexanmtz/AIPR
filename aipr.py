@@ -35,13 +35,16 @@ def request_changes_from_openai(context, filename):
         #engine="gpt-3.5-turbo",
         #prompt=context + "\n\n insert a title 'created by AIPRs README' on README.md file and 'Created by AIPRs other' on otherfile.txt file \n\n",
         prompt=prompts,
-        max_tokens=int(open_ai_tokens) or 200  # you can adjust this based on your needs
+        #max_tokens=int(open_ai_tokens) or 200  # you can adjust this based on your needs
     )
     #print('reponse choices', response.choices)
     #return response.choices[0].text.strip()
     stories = [""] * len(prompts)
     for choice in response.choices:
         stories[choice.index] = prompts[choice.index] + choice.text.strip()
+    # print stories
+    for story in stories:
+        print(story)
 
 def add_linebreaks(input_list):
     """
