@@ -10,7 +10,7 @@ issue_body = os.environ["ISSUE_BODY"]
 open_ai_api_key = os.environ["OPENAI_API_KEY"]
 open_ai_tokens = os.environ["OPENAI_TOKENS"]
 open_ai_model = os.environ["OPENAI_MODEL"]
-chunks = os.environ["CHUNKS"]
+chunks = os.environ["FILE_CHUNKS"]
 
 # Step 1: Set up OpenAI API client
 openai.api_key = open_ai_api_key
