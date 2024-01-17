@@ -15,6 +15,10 @@ inputs:
     description: 'Open AI model'
     required: false
     default: 'gpt-3.5-turbo-instruct'
+  file_chunks:
+    description: 'File chunks'
+    required: false
+    default: '0'
 runs:
   using: "composite"
   steps:
@@ -52,12 +56,14 @@ runs:
         OPENAI_API_KEY: ${{ inputs.openai_api_key }}
         OPENAI_TOKENS: ${{ inputs.openai_tokens }}
         OPENAI_MODEL: ${{ inputs.openai_model }}
+        FILE_CHUNKS: ${{ inputs.file_chunks }}
       run: |
         echo "Generating code with OpenAI API"
         echo "Getting the input from the repo which called the workflow: ${{ env.openai_api_key }}"
         echo "Open AI API KEY on the env: $OPENAI_API_KEY"
         echo "Open AI API max tokens set: $OPENAI_TOKENS"
         echo "Open AI MODEL set: $OPENAI_MODEL"
+        echo "File chunks set: $FILE_CHUNKS"
         python ./scripts/aipr.py
         
     - name: Create Pull Request

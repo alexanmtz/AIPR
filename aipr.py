@@ -10,6 +10,7 @@ issue_body = os.environ["ISSUE_BODY"]
 open_ai_api_key = os.environ["OPENAI_API_KEY"]
 open_ai_tokens = os.environ["OPENAI_TOKENS"]
 open_ai_model = os.environ["OPENAI_MODEL"]
+chunks = os.environ["CHUNKS"]
 
 # Step 1: Set up OpenAI API client
 openai.api_key = open_ai_api_key
@@ -25,17 +26,49 @@ def read_all_files_from_directory(directory):
                 file_contents[filepath] = f.read()
     return file_contents
 
+def split_into_chunks(text, chunk_size):
+    """
+    Splits a text into chunks, each of a maximum size of chunk_size.
+    """
+    chunks = []
+    while text:
+        chunk = text[:chunk_size]
+        text = text[chunk_size:]
+        chunks.append(chunk)
+    return chunks
+
+
 # Step 3: Query OpenAI for changes (this is a simplistic approach and can be refined)
 def request_changes_from_openai(context, filename):
     response = openai.Completion.create(
         model=open_ai_model or "gpt-3.5-turbo-instruct",
-        #engine="gpt-3.5-turbo",
-        #prompt=context + "\n\n insert a title 'created by AIPRs README' on README.md file and 'Created by AIPRs other' on otherfile.txt file \n\n",
         prompt="Giving the filename:'" + filename  + "' and the following content:'" + context + "'\n modify the content to provide a solution for this issue:\n'" + question + "'\n and output the result.",
         max_tokens=int(open_ai_tokens) or 200  # you can adjust this based on your needs
     )
     print('reponse choices', response.choices)
     return response.choices[0].text.strip()
+
+def request_changes_from_openai_in_chunks(context, filename, max_chunk_size):
+    """
+    Request changes from OpenAI by processing the content in chunks.
+    """
+    # Split the context into chunks
+    chunks = split_into_chunks(context, max_chunk_size)
+
+    modified_chunks = []
+    for chunk in chunks:
+        # Send each chunk to OpenAI
+        response = openai.Completion.create(
+            model=open_ai_model if len(open_ai_model) else "gpt-3.5-turbo-instruct",
+            prompt="Giving the filename:'" + filename + "' and the following content:'" + chunk + "'\n modify the content to provide a solution for this issue:\n'" + question + "'\n and output the result.",
+            max_tokens=int(open_ai_tokens) or 200
+        )
+        modified_chunk = response.choices[0].text.strip()
+        modified_chunks.append(modified_chunk)
+
+    # Combine the modified chunks
+    return "".join(modified_chunks)
+
 
 def add_linebreaks(input_list):
     """
@@ -47,13 +80,6 @@ def add_linebreaks(input_list):
             item += '\n'
         output_list.append(item)
     return output_list
-
-# Step 4: Generate a Git-like patch
-#def generate_patch(original, modified, filename):
-#    d = difflib.unified_diff(original.splitlines(), modified.splitlines(), filename, filename)
-#    diff_list = list(d)
-#    proccessed_diff_list = add_linebreaks(diff_list)
-#   return ''.join(proccessed_diff_list)
 
 def generate_patch(original, modified, filename):
     original_lines = original.splitlines(keepends=True)
@@ -87,7 +113,7 @@ if __name__ == "__main__":
     
     for filename, content in all_files.items():
         if filename in files_in_prompt_full_path:
-            modified_content = request_changes_from_openai(content, filename)
+            modified_content = request_changes_from_openai(content, filename) if int(chunks) == 0 else request_changes_from_openai_in_chunks(content, filename, int(chunks))
             print('modified content', modified_content)
             print('original content', content)
             patch = generate_patch(content, modified_content, filename)
