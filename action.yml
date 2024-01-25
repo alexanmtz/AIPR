@@ -19,7 +19,7 @@ inputs:
     description: 'File chunks'
     required: false
     default: '0'
-   target_branch:
+  target_branch:
     description: 'Target branch that the pull request will be merged'
     required: false
     default: 'main'
