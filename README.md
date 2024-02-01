@@ -17,7 +17,7 @@ There are a few limitations to keep in mind when using AIPR, including:
 - To ensure the most accurate solution, it is important to be as descriptive as possible in the issue description and comments.
 
 ## Example of an issue
-Change the './README.md' file to add to the Sample Workflow section a parameter target_branch with the main value as an example.
+Change the './README.md' file to add to the Sample Workflow section a parameter target_branch with the main value as an example and include an option 'file_chunks' with a random number value to the on:with key.
 
 ## How to Use AIPR in Your Project
 
@@ -57,6 +57,7 @@ jobs:
         openai_api_key: ${{ secrets.OPENAI_API_KEY }}
         openai_tokens: 200 #default is 200
         target_branch: main
+        file_chunks: 5 #random number value
 ```
 
 ## Author
