@@ -57,7 +57,7 @@ jobs:
         openai_api_key: ${{ secrets.OPENAI_API_KEY }}
         openai_tokens: 200 #default is 200
         target_branch: main
-        file_chunks: 5 #random number value
+        file_chunks: 10000 # split processing in chunks
 ```
 
 ## Author
