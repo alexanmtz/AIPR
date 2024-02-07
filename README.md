@@ -18,6 +18,7 @@ This action is designed to make it faster and easier to resolve issues and impro
 1. Improve documentation
 2. File refactoring
 3. Fix bugs
+_and many others_
 
 ## Example
 
