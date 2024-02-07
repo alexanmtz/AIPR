@@ -1,4 +1,4 @@
-name: Artificial intelligence Pull requests
+name: Creates a PR to solve an issue using ChatGPT
 description: Create an issue and have it solved by sending pull request with the solution using Open AI.
 branding:
   icon: 'code'
