@@ -53,7 +53,7 @@ There are a few limitations to keep in mind when using AIPR, including:
 
 ## Example of an issue
 Add a section on the bottom of the file './README.md' about the author of the project, Alexandre Magno (https://github.com/alexanmtz).
-(https://github.com/alexanmtz/AIPR/issues/10)[https://github.com/alexanmtz/AIPR/issues/10]
+[https://github.com/alexanmtz/AIPR/issues/10](https://github.com/alexanmtz/AIPR/issues/10)
 
 ## How to Use AIPR in Your Project
 
