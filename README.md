@@ -11,7 +11,7 @@ This action is designed to make it faster and easier to resolve issues and impro
 1. When an issue is labeled "AIPR" in a project repository, the AIPR Github action is triggered.
 2. The action uses the issue description and comments to generate a solution using ChatGPT.
 3. The solution is added to a new PR and pushed to the repository.
-4. Project collaborators can review the solution and merge the PR if they decide it is an appropriate solution.
+4. Project collaborators can review the solution and merge the PR if they decide it is appropriate.
 
 ## Applications
 
@@ -52,12 +52,13 @@ There are a few limitations to keep in mind when using AIPR, including:
 - To ensure the most accurate solution, it is important to be as descriptive as possible in the issue description and comments.
 
 ## Example of an issue
-Change the './README.md' file to add to the Sample Workflow section a parameter target_branch with the main value as an example and include an option 'file_chunks' with a random number value to the on:with key.
+Add a section on the bottom of the file './README.md' about the author of the project, Alexandre Magno (https://github.com/alexanmtz).
+(https://github.com/alexanmtz/AIPR/issues/10)[https://github.com/alexanmtz/AIPR/issues/10]
 
 ## How to Use AIPR in Your Project
 
-1. Install the AIPR repository as a dependency in your project.
-2. Create an issue in your project repository and label it with "AIPR".
+1. Install the AIPR Action on the marketplace: https://github.com/marketplace/actions/creates-a-pr-to-solve-an-issue-using-chatgpt.
+2. Label an issue in your project repository with "AIPR".
 3. Once the issue is labeled, the AIPR Github action will automatically create a PR to solve the issue using ChatGPT.
 4. Alternatively, you can manually trigger AIPR by commenting on the issue, such as "Create PR with AIPR 🚀." This will also create a PR using ChatGPT.
 
