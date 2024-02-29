@@ -22,25 +22,25 @@ _and many others_
 
 ## Example
 
-![A screenshot of a README.md file from the profile repository of Alexandre Magno](AIPR-screenshot10.png)  
+![A screenshot of a README.md file from the profile repository of Alexandre Magno](./screenshots/AIPR-screenshot10.png)  
 *Here's an example of documentation in my profile, that I would like to use AIPR to change it*
 ___
-![A screenshot of a new issue page with an issue to add a new section with my hobbies in the documentation](AIPR-screenshot9.png)  
+![A screenshot of a new issue page with an issue to add a new section with my hobbies in the documentation](./screenshots/AIPR-screenshot9.png)  
 *Then I created an issue asking to change the file content to add a new section about my hobbies*
 ___
-![Showing how to label to create a new PR from that issue](AIPR-screenshot8.png)  
+![Showing how to label to create a new PR from that issue](./screenshots/AIPR-screenshot8.png)  
 *When you add a label AIPR it will trigger the action and you will receive a PR with a solution for that issue*
 ___
-![Workflow from AIPR triggered](AIPR-screenshot6.png)  
+![Workflow from AIPR triggered](./screenshots/AIPR-screenshot6.png)  
 *The Github action will run and it will call the OPEN AI API to create a solution for your issue based in your configuration and OPEN AI token provided*
 ___
-![Pull request with AIPR created](AIPR-screenshot4.png)    
+![Pull request with AIPR created](./screenshots/AIPR-screenshot4.png)    
 *A Pull Request will be send with the solution*
 ___
-![Pull request with AIPR created](AIPR-screenshot2.png) 
+![Pull request with AIPR created](./screenshots/AIPR-screenshot2.png) 
 *You can see the diff and review the code from AIPR*
 ___
-![Pull request with AIPR created](AIPR-screenshot1.png)  
+![Pull request with AIPR created](./screenshots/AIPR-screenshot1.png)  
 *You can see the diff and review the code from AIPR*
 ___
 
