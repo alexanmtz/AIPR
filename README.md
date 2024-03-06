@@ -13,6 +13,11 @@ This action is designed to make it faster and easier to resolve issues and impro
 3. The solution is added to a new PR and pushed to the repository.
 4. Project collaborators can review the solution and merge the PR if they decide it is appropriate.
 
+## Install
+
+Go to the AIPR project on marketplace [AIPR on Github Marketplace](https://github.com/marketplace/actions/creates-a-pr-to-solve-an-issue-using-chatgpt) and follow the instructions:
+
+
 ## Applications
 
 1. Improve documentation
