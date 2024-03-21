@@ -17,8 +17,20 @@ This action is designed to make it faster and easier to resolve issues and impro
 
 Go to the AIPR project on marketplace [AIPR on Github Marketplace](https://github.com/marketplace/actions/creates-a-pr-to-solve-an-issue-using-chatgpt) and follow the instructions:
 
+## Allow Github Actions to create PR's
 
-## Applications
+In order to have the Action fully work, you need first *Allow Github actions to create and approve Pull Requests*
+
+First go to your project settings and go to _Actions / General_
+
+Then enable the *Allow Github actions to create and approve Pull Requests* option as on the images below
+
+![A screenshot of Github action setting to allow Github Actions to create PR's](./screenshots/AIPR-screenshot-update-setting01.png)
+
+![A screenshot of Github action setting to allow Github Actions to create PR's](./screenshots/AIPR-screenshot-update-setting02.png)
+
+
+## Where it could be useful
 
 1. Improve documentation
 2. File refactoring
