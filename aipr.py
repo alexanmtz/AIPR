@@ -85,7 +85,7 @@ def generate_patch(original, modified, filename):
     original_lines = original.splitlines(keepends=True)
     modified_lines = modified.splitlines(keepends=True)
     d = difflib.unified_diff(original_lines, modified_lines, fromfile=filename, tofile=filename)
-    return ''.join(d)
+    return '\n'.join(d)
 
 def extract_specific_file_path(text):
     # Regular expression to find file paths in a specific format as per the example
